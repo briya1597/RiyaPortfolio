@@ -1,290 +1,217 @@
-import React, { useState, useEffect, useRef } from 'react';
-import {
-  motion,
-  useMotionValue,
-  useSpring,
-  useTransform,
-  AnimatePresence
-} from 'framer-motion';
-import { Github, Linkedin, Mail, ArrowRight, Download } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { ArrowRight, Download, ChevronRight, Code2, Briefcase, Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import PageTransition from '../components/PageTransition';
 import profileImg from '../assets/profile.png';
 
-// ─── Floating Particle ──────────────────────────────────────────────────────
-const PARTICLE_COUNT = 18;
-const particles = Array.from({ length: PARTICLE_COUNT }, (_, i) => ({
-  id: i,
-  size: Math.random() * 6 + 2,
-  left: `${Math.random() * 100}%`,
-  duration: Math.random() * 15 + 10,
-  delay: Math.random() * 12,
-}));
+// Data imports
+import projectsData from '../data/projects.json';
+import skillsData from '../data/skills.json';
+import certificationsData from '../data/certifications.json';
 
-const FloatingParticles = () => (
-  <div className="absolute inset-0 overflow-hidden pointer-events-none z-0" aria-hidden="true">
-    {particles.map((p) => (
-      <div
-        key={p.id}
-        className="particle"
-        style={{
-          width: p.size,
-          height: p.size,
-          left: p.left,
-          bottom: '-20px',
-          animationDuration: `${p.duration}s`,
-          animationDelay: `${p.delay}s`,
-        }}
-      />
-    ))}
-  </div>
-);
+// Extract preview data
+const topSkills = Object.values(skillsData).flat().slice(0, 10);
+const featuredProjects = projectsData.slice(0, 2);
+const featuredCerts = certificationsData.slice(0, 3);
 
-// ─── Cursor Glow ────────────────────────────────────────────────────────────
-const CursorGlow = () => {
-  const cursorRef = useRef(null);
-
-  useEffect(() => {
-    const move = (e) => {
-      if (cursorRef.current) {
-        cursorRef.current.style.left = `${e.clientX}px`;
-        cursorRef.current.style.top = `${e.clientY}px`;
-      }
-    };
-    window.addEventListener('mousemove', move);
-    return () => window.removeEventListener('mousemove', move);
-  }, []);
-
-  return <div ref={cursorRef} className="cursor-glow hidden lg:block" />;
-};
-
-// ─── Stagger Variants ────────────────────────────────────────────────────────
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.15 } },
-};
-
-const itemVariants = {
-  hidden:  { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
-};
-
-// ─── Typing Designation ──────────────────────────────────────────────────────
-const useTypewriter = (text, speed = 55) => {
+// Typed Text Hook
+const useTypewriter = (texts, typingSpeed = 70, deletingSpeed = 40, delay = 2000) => {
   const [displayed, setDisplayed] = useState('');
-  const [done, setDone] = useState(false);
+  const [textIndex, setTextIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    setDisplayed('');
-    setDone(false);
-    let i = 0;
-    const tick = setInterval(() => {
-      setDisplayed(text.slice(0, i + 1));
-      i++;
-      if (i >= text.length) { clearInterval(tick); setDone(true); }
-    }, speed);
-    return () => clearInterval(tick);
-  }, [text, speed]);
+    let timeout;
+    const currentText = texts[textIndex];
 
-  return { displayed, done };
+    if (!isDeleting && displayed === currentText) {
+      timeout = setTimeout(() => setIsDeleting(true), delay);
+    } else if (isDeleting && displayed === '') {
+      setIsDeleting(false);
+      setTextIndex((prev) => (prev + 1) % texts.length);
+    } else {
+      const nextDelay = isDeleting ? deletingSpeed : typingSpeed;
+      timeout = setTimeout(() => {
+        setDisplayed(currentText.slice(0, displayed.length + (isDeleting ? -1 : 1)));
+      }, nextDelay);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [displayed, isDeleting, textIndex, texts, typingSpeed, deletingSpeed, delay]);
+
+  return displayed;
 };
 
-// ─── Home Page ────────────────────────────────────────────────────────────────
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+};
+const stagger = {
+  visible: { transition: { staggerChildren: 0.1 } }
+};
+
 const Home = () => {
-  // Mouse parallax for the entire content
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
-  const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
-  
-  // Parallax transforms
-  const moveX = useTransform(springX, [-0.5, 0.5], ['-15px', '15px']);
-  const moveY = useTransform(springY, [-0.5, 0.5], ['-15px', '15px']);
-
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    mouseX.set((e.clientX - rect.left) / rect.width - 0.5);
-    mouseY.set((e.clientY - rect.top) / rect.height - 0.5);
-  };
-  
-  const handleMouseLeave = () => {
-    mouseX.set(0);
-    mouseY.set(0);
-  };
-
-  const { displayed: typedDesig, done: designDone } = useTypewriter(
-    'Full Stack Developer | CSE Student',
-    60
-  );
+  const typedDesig = useTypewriter([
+    'Full Stack Developer',
+    'Tech Problem Solver',
+    'Creative Engineer'
+  ]);
 
   return (
     <PageTransition>
-      {/* Cursor glow */}
-      <CursorGlow />
+      <div className="bg-slate-50 dark:bg-slate-950 transition-colors duration-700 min-h-screen">
+        
+        {/* ─── HERO SECTION ───────────────────────────────────────────── */}
+        <section className="relative min-h-[90vh] flex items-center pt-32 pb-12 overflow-hidden px-6 lg:px-12">
+          {/* Subtle Glow Background */}
+          <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center opacity-30 dark:opacity-20">
+            <div className="w-[600px] h-[600px] bg-primary/30 rounded-full blur-[120px]" />
+          </div>
 
-      <section
-        className="relative min-h-[88vh] flex items-center justify-center overflow-hidden px-4 py-12"
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-      >
-        {/* Animated background layer */}
-        <div className="absolute inset-0 bg-slate-50 dark:bg-slate-950 transition-colors duration-700 pointer-events-none" />
-        <div className="absolute inset-0 bg-mesh opacity-40 dark:opacity-30 pointer-events-none" />
+          <motion.div 
+            variants={stagger} initial="hidden" animate="visible"
+            className="container mx-auto max-w-7xl relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+          >
+            {/* Left Text */}
+            <div className="order-2 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left">
+              <motion.div variants={fadeUp} className="mb-6 flex items-center gap-4">
+                <div className="h-px w-12 bg-primary/50" />
+                <span className="text-xs font-black tracking-[0.3em] uppercase text-primary">Based in India</span>
+              </motion.div>
 
-        {/* Subtle pulsing orbs - more professional colors */}
-        <motion.div
-          animate={{ scale: [1, 1.1, 1], opacity: [0.15, 0.3, 0.15] }}
-          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/10 dark:bg-primary-900/10 rounded-full blur-[140px] pointer-events-none"
-        />
-        <motion.div
-          animate={{ scale: [1, 1.15, 1], opacity: [0.1, 0.25, 0.1] }}
-          transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-          className="absolute bottom-1/4 right-1/4 w-[450px] h-[450px] bg-secondary/10 dark:bg-indigo-900/10 rounded-full blur-[140px] pointer-events-none"
-        />
+              <motion.h1 variants={fadeUp} className="text-6xl sm:text-7xl lg:text-[7rem] font-medium leading-[0.95] tracking-tighter text-slate-900 dark:text-white mb-6" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                Hi, I'm <br />
+                <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-400">Riya</span>
+              </motion.h1>
 
-        {/* Floating particles - subtle */}
-        <FloatingParticles />
+              <motion.div variants={fadeUp} className="mb-8 h-8 text-xl md:text-2xl font-bold text-slate-600 dark:text-slate-300 tracking-[0.15em] uppercase" style={{ fontFamily: "'Nunito', sans-serif" }}>
+                {typedDesig}
+                <span className="inline-block w-3 h-6 bg-primary/60 ml-2 animate-pulse" />
+              </motion.div>
 
-        {/* ── Content Wrapper ── */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          style={{ x: moveX, y: moveY }}
-          className="relative z-10 w-full max-w-4xl flex flex-col items-center text-center px-6"
-        >
-          {/* ── Avatar ── */}
-          <motion.div variants={itemVariants} className="relative mb-14 group">
-            {/* Classy glow behind avatar */}
-            <div className="absolute inset-0 bg-primary-500/10 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-            
-            {/* Subtle gradient ring */}
-            <div className="absolute -inset-[3px] rounded-full bg-gradient-to-tr from-slate-700 via-slate-500 to-slate-700 opacity-20" />
-            
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
-              className="absolute -inset-[3px] rounded-full bg-gradient-to-tr from-primary-500/20 via-transparent to-violet-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-            />
-            
-            {/* Avatar container */}
-            <div className="relative w-44 h-44 md:w-56 md:h-56 rounded-full border border-slate-200 dark:border-white/10 overflow-hidden shadow-2xl transition-all duration-700 group-hover:scale-[1.03] group-hover:border-primary/40">
-              <img
-                src={profileImg}
-                alt="Riya – Full Stack Developer"
-                className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
-              />
+              <motion.p variants={fadeUp} className="text-lg text-slate-500 dark:text-slate-400 leading-relaxed max-w-lg mb-10">
+                Crafting premium digital experiences bridging complex logic with flawless design. I build scalable web ecosystems, pixel by pixel.
+              </motion.p>
+
+              <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
+                <Link to="/projects" className="px-8 py-4 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold uppercase tracking-[0.1em] text-sm hover:scale-105 transition-transform flex items-center gap-2">
+                  View Work <ArrowRight size={16} />
+                </Link>
+                <a href="#" className="px-8 py-4 rounded-full border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-bold uppercase tracking-[0.1em] text-sm hover:border-primary hover:text-primary transition-colors flex items-center gap-2">
+                  <Download size={16} /> Resume
+                </a>
+              </motion.div>
+            </div>
+
+            {/* Right Image - Oval Shape */}
+            <motion.div variants={fadeUp} className="order-1 lg:order-2 flex justify-center lg:justify-end relative pb-10 lg:pb-0">
+               <div className="relative w-64 h-80 sm:w-[320px] sm:h-[420px] rounded-[50%] p-[3px] bg-gradient-to-tr from-sky-400 to-indigo-500 shadow-2xl overflow-hidden hover:-translate-y-2 transition-transform duration-500">
+                 <div className="absolute inset-1 rounded-[50%] overflow-hidden bg-slate-900 border-4 border-slate-950">
+                   <img src={profileImg} alt="Riya" className="w-full h-full object-cover object-top grayscale-[0.15] hover:grayscale-0 transition-all duration-500 scale-105 hover:scale-110" />
+                 </div>
+               </div>
+            </motion.div>
+          </motion.div>
+        </section>
+
+        {/* ─── ABOUT / OVERVIEW SECTION ───────────────────────────────────────────── */}
+        <section className="py-24 px-6 lg:px-12 bg-white dark:bg-slate-900/40">
+          <div className="container mx-auto max-w-4xl text-center">
+            <h2 className="text-3xl font-black mb-8 text-slate-900 dark:text-white uppercase tracking-widest border-b-2 border-primary/20 inline-block pb-4">A Brief Intro</h2>
+            <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
+              I am an ambitious Full Stack Developer and CSE student with a deep passion for designing elegant user interfaces and engineering robust backend systems. I specialize in modern web technologies and constantly explore innovative frameworks to deliver scalable, high-performance solutions.
+            </p>
+          </div>
+        </section>
+
+        {/* ─── SKILLS PREVIEW ───────────────────────────────────────────── */}
+        <section className="py-24 px-6 lg:px-12">
+          <div className="container mx-auto max-w-7xl">
+            <div className="flex justify-between items-end mb-12 border-b border-slate-200 dark:border-slate-800 pb-4">
+              <div className="flex items-center gap-3">
+                <Code2 className="text-primary" size={28} />
+                <h2 className="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-widest">Tech Arsenal</h2>
+              </div>
+              <Link to="/skills" className="text-sm font-bold text-primary hover:text-accent-secondary flex items-center gap-1 uppercase tracking-widest transition-colors">
+                View All <ChevronRight size={16} />
+              </Link>
             </div>
             
-            {/* Status dot (Removed feature: Available tag) */}
-          </motion.div>
+            <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+              {topSkills.map((skill, idx) => (
+                <div key={idx} className="px-6 py-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex items-center gap-3 hover:-translate-y-1 hover:border-primary/50 transition-all duration-300">
+                  <div className="w-2 h-2 rounded-full" style={{ backgroundColor: skill.color || '#0ea5e9' }} />
+                  <span className="text-md font-bold text-slate-800 dark:text-slate-200 tracking-wider">
+                    {skill.name}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
-          {/* ── Name ── */}
-          <motion.h1
-            variants={itemVariants}
-            className="text-6xl md:text-8xl font-black mb-6 leading-none tracking-tight text-theme-main flex items-center justify-center gap-2"
-            style={{ fontFamily: "'Syne', sans-serif" }}
-          >
-            Riya<span className="text-primary inline-block">✦</span>
-          </motion.h1>
-
-          {/* ── Designation (Typing) ── */}
-          <motion.div variants={itemVariants} className="mb-10 flex items-center justify-center">
-            <p
-              className="text-lg md:text-xl font-medium text-theme-muted tracking-[0.4em] uppercase"
-              style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-            >
-              {typedDesig}
-              {!designDone && (
-                <span className="inline-block w-px h-6 bg-primary/50 ml-1 align-middle animate-pulse" />
-              )}
-            </p>
-          </motion.div>
-
-          {/* ── Description ── */}
-          <motion.div 
-            variants={itemVariants} 
-            className="mb-14 max-w-2xl mx-auto px-6"
-          >
-            <p className="text-lg md:text-xl leading-[1.8] text-theme-muted transition-colors duration-500 group-hover:text-theme-main font-light text-center" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-              A Full Stack Developer and CSE student passionate about building 
-              <span className="text-primary font-medium mx-1.5">scalable web applications</span> 
-              and 
-              <span className="text-secondary font-medium mx-1.5">innovative digital experiences.</span> 
-              I focus on writing clean, efficient code and creating seamless user journeys.
-            </p>
-          </motion.div>
-
-          {/* ── CTA Buttons ── */}
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-col sm:flex-row items-center justify-center gap-8 w-full"
-          >
-            {/* Primary: View Projects */}
-            <motion.div
-              whileHover={{ y: -5 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <Link
-                to="/projects"
-                className="flex items-center justify-center gap-4 px-12 py-5 rounded-full text-xs font-bold text-theme-main uppercase tracking-[0.2em] bg-slate-900/5 dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:bg-slate-900/10 dark:hover:bg-white/10 hover:border-primary/30 transition-all duration-300 group shadow-2xl"
-              >
-                View Selected Work
-                <ArrowRight
-                  size={16}
-                  className="group-hover:translate-x-2 transition-transform duration-300 text-primary"
-                />
+        {/* ─── PROJECTS PREVIEW ───────────────────────────────────────────── */}
+        <section className="py-24 px-6 lg:px-12 bg-white dark:bg-slate-900/40">
+          <div className="container mx-auto max-w-7xl">
+            <div className="flex justify-between items-end mb-12 border-b border-slate-200 dark:border-slate-800 pb-4">
+              <div className="flex items-center gap-3">
+                <Briefcase className="text-primary" size={28} />
+                <h2 className="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-widest">Featured Work</h2>
+              </div>
+              <Link to="/projects" className="text-sm font-bold text-primary hover:text-accent-secondary flex items-center gap-1 uppercase tracking-widest transition-colors">
+                View All <ChevronRight size={16} />
               </Link>
-            </motion.div>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {featuredProjects.map((project) => (
+                <div key={project.id} className="group relative rounded-[32px] overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-8 hover:shadow-2xl transition-all duration-500">
+                  <div className={`absolute inset-0 opacity-10 bg-gradient-to-br ${project.color} group-hover:opacity-20 transition-opacity`} />
+                  <div className="relative z-10">
+                    <span className="text-[10px] font-black tracking-widest uppercase text-primary mb-4 block">
+                      {project.tag}
+                    </span>
+                    <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-4">{project.shortTitle}</h3>
+                    <p className="text-slate-600 dark:text-slate-400 mb-8 line-clamp-3">{project.description}</p>
+                    <Link to="/projects" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-slate-900 dark:text-white group-hover:text-primary transition-colors">
+                      Discover <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
-            {/* Secondary: Contact Me */}
-            <motion.div
-              whileHover={{ y: -3 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <Link
-                to="/contact"
-                className="flex items-center justify-center gap-2 px-12 py-5 rounded-full text-xs font-bold uppercase tracking-[0.2em] text-theme-muted hover:text-theme-main transition-all duration-300"
-              >
-                Let's Talk
+        {/* ─── CERTIFICATIONS PREVIEW ───────────────────────────────────────────── */}
+        <section className="py-24 px-6 lg:px-12">
+          <div className="container mx-auto max-w-7xl">
+            <div className="flex justify-between items-end mb-12 border-b border-slate-200 dark:border-slate-800 pb-4">
+              <div className="flex items-center gap-3">
+                <Award className="text-primary" size={28} />
+                <h2 className="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-widest">Certifications</h2>
+              </div>
+              <Link to="/certifications" className="text-sm font-bold text-primary hover:text-accent-secondary flex items-center gap-1 uppercase tracking-widest transition-colors">
+                View All <ChevronRight size={16} />
               </Link>
-            </motion.div>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {featuredCerts.map((cert) => (
+                <div key={cert.id} className="rounded-[24px] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 flex flex-col items-center text-center hover:-translate-y-2 hover:shadow-xl transition-all duration-300">
+                  <div className="w-full aspect-[4/3] rounded-xl overflow-hidden mb-6 bg-slate-100 dark:bg-slate-950 flex items-center justify-center p-4">
+                    <img src={cert.image} alt={cert.title} className="w-full h-full object-contain" />
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{cert.title}</h3>
+                  <span className="text-xs font-black tracking-widest uppercase text-primary">{cert.platform}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
-            {/* Tertiary: Resume */}
-            <motion.a
-              href="#"
-              whileHover={{ y: -2, color: 'var(--accent-primary)' }}
-              className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-theme-muted transition-colors duration-300"
-            >
-              <Download size={14} className="text-theme-dim" /> Resume.pdf
-            </motion.a>
-          </motion.div>
-
-          {/* ── Social Icons ── */}
-          <motion.div
-            variants={itemVariants}
-            className="flex items-center gap-10 mt-20 pt-12 border-t border-slate-200 dark:border-white/5 w-full max-w-sm justify-center"
-          >
-            {[
-              { icon: <Github size={20} />, href: 'https://github.com', label: 'GitHub' },
-              { icon: <Linkedin size={20} />, href: 'https://linkedin.com', label: 'LinkedIn' },
-              { icon: <Mail size={20} />, href: 'mailto:riya@example.com', label: 'Email' },
-            ].map((s) => (
-              <motion.a
-                key={s.label}
-                href={s.href}
-                aria-label={s.label}
-                whileHover={{ y: -5, color: 'var(--accent-primary)' }}
-                className="text-theme-dim hover:text-primary transition-all duration-500"
-              >
-                {s.icon}
-              </motion.a>
-            ))}
-          </motion.div>
-        </motion.div>
-
-      </section>
+      </div>
     </PageTransition>
   );
 };
