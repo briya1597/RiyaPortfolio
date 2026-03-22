@@ -85,7 +85,7 @@ const FormField = ({ label, icon, type = 'text', placeholder, value, onChange, n
     <motion.div variants={fieldItem} className="flex flex-col gap-2">
       <label
         className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-1"
-        style={{ fontFamily: "'Inter', sans-serif" }}
+        style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
       >
         {label}
       </label>
@@ -109,7 +109,7 @@ const FormField = ({ label, icon, type = 'text', placeholder, value, onChange, n
           onBlur={() => setFocused(false)}
           rows={textarea ? 5 : undefined}
           className={`w-full bg-slate-100/50 dark:bg-slate-900/40 backdrop-blur-md border border-slate-200 dark:border-white/5 rounded-2xl pl-12 pr-4 py-4 text-sm text-theme-main placeholder-theme-dim outline-none resize-none transition-all duration-500 focus:bg-white dark:focus:bg-slate-900/60 focus:border-primary/30 ${textarea ? 'pt-4' : ''}`}
-          style={{ fontFamily: "'Inter', sans-serif" }}
+          style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
         />
       </div>
     </motion.div>
@@ -218,8 +218,8 @@ const Contact = () => {
               Portfolio / Contact
             </div>
             <h1
-              className="text-5xl md:text-7xl font-black mb-5 leading-tight tracking-tight text-theme-main"
-              style={{ fontFamily: "'Poppins', sans-serif" }}
+              className="text-4xl md:text-6xl font-black mb-5 leading-tight tracking-tight text-theme-main flex items-center justify-center gap-2"
+              style={{ fontFamily: "'Syne', sans-serif" }}
             >
               Let's{' '}
               <span
@@ -231,7 +231,7 @@ const Contact = () => {
             </h1>
             <p
               className="text-base md:text-lg text-theme-muted max-w-xl mx-auto leading-relaxed font-medium"
-              style={{ fontFamily: "'Inter', sans-serif" }}
+              style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
             >
               Open to{' '}
               <span className="text-theme-main font-semibold">opportunities, collaborations,</span>{' '}
@@ -257,12 +257,12 @@ const Contact = () => {
               {/* Intro text */}
               <div>
                 <h2
-                  className="text-2xl font-black text-theme-main mb-2 tracking-tight"
-                  style={{ fontFamily: "'Poppins', sans-serif" }}
+                  className="text-2xl font-black text-theme-main mb-2 tracking-tight flex items-center gap-2"
+                  style={{ fontFamily: "'Syne', sans-serif" }}
                 >
-                  Get in Touch
+                  Get in Touch <span className="text-primary animate-pulse-glow">✦</span>
                 </h2>
-                <p className="text-sm text-theme-muted leading-relaxed" style={{ fontFamily: "'Inter', sans-serif" }}>
+                <p className="text-sm text-theme-muted leading-relaxed" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                   Whether you have a project idea, a job opportunity, or just want to say hello — my inbox is always open.
                 </p>
               </div>
@@ -312,7 +312,7 @@ const Contact = () => {
                     <div className="text-[10px] font-black uppercase tracking-[0.25em] text-primary mb-2">Send a Message</div>
                     <h3
                       className="text-2xl font-black text-theme-main tracking-tight"
-                      style={{ fontFamily: "'Poppins', sans-serif" }}
+                      style={{ fontFamily: "'Syne', sans-serif" }}
                     >
                       I'll get back to you soon ✦
                     </h3>
@@ -381,41 +381,19 @@ const Contact = () => {
                             disabled={status === 'sending'}
                             whileHover={{ y: -4, scale: 1.01 }}
                             whileTap={{ scale: 0.98 }}
-                            className="w-full flex items-center justify-center gap-3 py-4.5 rounded-2xl text-sm font-black uppercase tracking-[0.2em] text-white transition-all duration-500 relative overflow-hidden group shadow-2xl"
-                            style={{
-                              background: 'linear-gradient(135deg, var(--accent-primary), var(--accent-secondary), var(--accent-primary))',
-                              backgroundSize: '200% 100%',
-                            }}
+                            className="w-full flex items-center justify-center py-4 rounded-xl text-sm font-bold tracking-widest text-white transition-all duration-300 bg-primary hover:bg-primary-500 shadow-xl hover:shadow-primary-500/30 active:scale-[0.98] group relative overflow-hidden"
+                            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
                           >
-                            {/* Moving gradient background */}
-                            <motion.div 
-                              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                              animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-                              transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
-                              style={{ 
-                                background: 'linear-gradient(90deg, var(--accent-primary), var(--accent-secondary), var(--accent-primary))',
-                                backgroundSize: '200% 100%'
-                              }}
-                            />
-                            
-                            <span className="relative z-10 flex items-center gap-2">
+                            <span className="relative z-10 flex items-center gap-3 uppercase">
                               {status === 'sending' ? (
                                 <>
                                   <Loader2 size={18} className="animate-spin" />
-                                  Sending…
+                                  Sending
                                 </>
                               ) : (
                                 <>
-                                  <Send size={18} className="group-hover:rotate-12 transition-transform duration-300" />
                                   Send Message
-                                  <motion.span
-                                    className="ml-1"
-                                    initial={{ x: 0 }}
-                                    whileHover={{ x: 5 }}
-                                    transition={{ type: 'spring', stiffness: 400 }}
-                                  >
-                                    <ArrowUpRight size={18} />
-                                  </motion.span>
+                                  <ArrowUpRight size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
                                 </>
                               )}
                             </span>

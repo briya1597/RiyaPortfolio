@@ -177,28 +177,23 @@ const Home = () => {
               />
             </div>
             
-            {/* Status dot */}
-            <div className="absolute bottom-5 right-5 flex items-center gap-2 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md px-3 py-1.5 rounded-full shadow-xl border border-slate-200 dark:border-white/5 z-20">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/60 animate-ping absolute" />
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80 relative" />
-              <span className="text-[10px] font-bold tracking-widest text-theme-muted uppercase">Available</span>
-            </div>
+            {/* Status dot (Removed feature: Available tag) */}
           </motion.div>
 
           {/* ── Name ── */}
           <motion.h1
             variants={itemVariants}
-            className="text-7xl md:text-9xl font-black mb-6 leading-none tracking-tight text-theme-main"
-            style={{ fontFamily: "'Poppins', sans-serif" }}
+            className="text-6xl md:text-8xl font-black mb-6 leading-none tracking-tight text-theme-main flex items-center justify-center gap-2"
+            style={{ fontFamily: "'Syne', sans-serif" }}
           >
-            Riya<span className="text-primary">.</span>
+            Riya<span className="text-primary inline-block">✦</span>
           </motion.h1>
 
           {/* ── Designation (Typing) ── */}
           <motion.div variants={itemVariants} className="mb-10 flex items-center justify-center">
             <p
               className="text-lg md:text-xl font-medium text-theme-muted tracking-[0.4em] uppercase"
-              style={{ fontFamily: "'Inter', sans-serif" }}
+              style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
             >
               {typedDesig}
               {!designDone && (
@@ -212,12 +207,12 @@ const Home = () => {
             variants={itemVariants} 
             className="mb-14 max-w-2xl mx-auto px-6"
           >
-            <p className="text-lg md:text-xl leading-[1.8] text-theme-muted transition-colors duration-500 group-hover:text-theme-main font-light text-center" style={{ fontFamily: "'Inter', sans-serif" }}>
+            <p className="text-lg md:text-xl leading-[1.8] text-theme-muted transition-colors duration-500 group-hover:text-theme-main font-light text-center" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
               A Full Stack Developer and CSE student passionate about building 
               <span className="text-primary font-medium mx-1.5">scalable web applications</span> 
               and 
-              <span className="text-secondary font-medium mx-1.5">AI-driven solutions.</span> 
-              I focus on writing clean, efficient code and creating seamless user experiences.
+              <span className="text-secondary font-medium mx-1.5">innovative digital experiences.</span> 
+              I focus on writing clean, efficient code and creating seamless user journeys.
             </p>
           </motion.div>
 

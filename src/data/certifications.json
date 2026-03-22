@@ -11,7 +11,7 @@
     "colorBorder": "border-sky-500/20",
     "image": "/Certificate/Computational Theory.png",
     "description": "Explored the formal mathematical models of computation, including automata, languages, and complexity.",
-    "link": "#"
+    "link": "https://drive.google.com/file/d/1CGdffVMfcmfTBazYwtir-P3osa15cT8Q/view?usp=sharing"
   },
   {
     "id": 2,
@@ -25,7 +25,7 @@
     "colorBorder": "border-violet-500/20",
     "image": "/Certificate/Build Gerative AI.png",
     "description": "Learned to build and deploy applications using large language models and generative AI techniques.",
-    "link": "#"
+    "link": "https://drive.google.com/file/d/1-HsYAwOi3GK3ftEN6a1yzdVQ0-Yts_QS/view?usp=sharing"
   },
   {
     "id": 3,
@@ -39,7 +39,7 @@
     "colorBorder": "border-emerald-500/20",
     "image": "/Certificate/CRUD operation.png",
     "description": "Mastered the core operations of MongoDB, including data modeling, querying, and indexing.",
-    "link": "#"
+    "link": "https://drive.google.com/file/d/1OFTUMYDwOIPLO8UQxAb0K0N4Y9l4iiYm/view?usp=sharing"
   },
   {
     "id": 4,
@@ -53,7 +53,7 @@
     "colorBorder": "border-amber-500/20",
     "image": "/Certificate/fundamental of network computing.png",
     "description": "Gained a deep understanding of networking protocols, layers, and communication architectures.",
-    "link": "#"
+    "link": "https://coursera.org/verify/FSCAHMU1QRZQ"
   },
   {
     "id": 5,
@@ -67,7 +67,7 @@
     "colorBorder": "border-amber-500/20",
     "image": "/Certificate/peer-to-peer protocol.png",
     "description": "Studied the design and implementation of decentralized peer-to-peer network systems.",
-    "link": "#"
+    "link": "https://coursera.org/verify/D185QF9QMTKZ"
   },
   {
     "id": 6,
@@ -81,7 +81,7 @@
     "colorBorder": "border-amber-500/20",
     "image": "/Certificate/bits and bytes of computer network.png",
     "description": "A comprehensive look at the physical and logical layers of the internet and networking.",
-    "link": "#"
+    "link": "https://coursera.org/verify/IRIMCK4EQTK6"
   },
   {
     "id": 7,
@@ -95,7 +95,7 @@
     "colorBorder": "border-blue-500/20",
     "image": "/Certificate/C programming.png",
     "description": "Fundamental programming concepts and logic building using the C language.",
-    "link": "#"
+    "link": "https://drive.google.com/file/d/1vmXrGDI43rLHYdAQEkO_ESW248seuO_N/view?usp=sharing"
   },
   {
     "id": 8,
@@ -114,7 +114,7 @@
   {
     "id": 9,
     "title": "Data Structures and Algorithms",
-    "platform": "Neocolab",
+    "platform": "IamNeo",
     "date": "2024",
     "category": "CS Fundamentals",
     "color": "#ec4899",
@@ -123,7 +123,7 @@
     "colorBorder": "border-pink-500/20",
     "image": "/Certificate/DSA Neocolab.png",
     "description": "Advanced problem solving and algorithmic efficiency training.",
-    "link": "#"
+    "link": "https://drive.google.com/file/d/1tOcOp0pUkUohbmfR3e8sv7d4r0BQnLEF/view?usp=sharing"
   },
   {
     "id": 10,
@@ -137,7 +137,7 @@
     "colorBorder": "border-yellow-500/20",
     "image": "/Certificate/Javascript.png",
     "description": "Core concepts of JavaScript, including ES6+ features and asynchronous programming.",
-    "link": "#"
+    "link": "https://drive.google.com/file/d/12F-XwZzWS8Zj4t7tOnT1qtDN97jiQ_S6/view?usp=sharing"
   },
   {
     "id": 11,
@@ -151,7 +151,7 @@
     "colorBorder": "border-cyan-500/20",
     "image": "/Certificate/NPTEL cloud computing.png",
     "description": "Understanding cloud infrastructure, virtualization, and service models.",
-    "link": "#"
+    "link": "https://drive.google.com/file/d/1hseGspcSpwRJqFLSw9_bu4Pdre9VV_JR/view?usp=sharing"
   },
   {
     "id": 12,
@@ -165,7 +165,7 @@
     "colorBorder": "border-purple-500/20",
     "image": "/Certificate/Udemy Master in Generative AI .png",
     "description": "Mastering state-of-the-art generative models and architectural components.",
-    "link": "#"
+    "link": "https://drive.google.com/file/d/1SVDs9r4vq-33TIiyIPhoL0JCnBaA4gpD/view?usp=sharing"
   },
   {
     "id": 13,
@@ -179,7 +179,7 @@
     "colorBorder": "border-slate-500/20",
     "image": "/Certificate/hardware operating system.png",
     "description": "Learned about computer hardware components and the core functions of operating systems.",
-    "link": "#"
+    "link": "https://coursera.org/verify/T8Y0DXVDZY5Y"
   },
   {
     "id": 14,
@@ -194,6 +194,47 @@
     "image": "/Certificate/Training.png",
     "description": "Comprehensive hands-on training focusing on advanced data structures, algorithmic efficiency, and complex problem-solving strategies.",
     "link": "https://drive.google.com/file/d/1Kl3Hn6supGSIk3LC-1YPzaWOfy96AnNO/view?usp=sharing"
+  },
+  {
+    "id": 15,
+    "title": "Java Programming",
+    "platform": "Infosys Springboard",
+    "date": "2024",
+    "category": "CS Fundamentals",
+    "color": "#fbbf24",
+    "colorBg": "bg-yellow-500/10",
+    "colorText": "text-yellow-400",
+    "colorBorder": "border-yellow-500/20",
+    "image": "/Certificate/Java.png",
+    "description": "Core concepts of Java, including Object-Oriented Programming (OOP) and advanced features.",
+    "link": "https://drive.google.com/file/d/10IHmdunH0QdbXKyigUZmV8iWU1weBjGt/view?usp=sharing"
+  },
+  {
+    "id": 16,
+    "title": "Object-Oriented Programming (OOPs)",
+    "platform": "Infosys Springboard",
+    "date": "2024",
+    "category": "CS Fundamentals",
+    "color": "#f43f5e",
+    "colorBg": "bg-rose-500/10",
+    "colorText": "text-rose-400",
+    "colorBorder": "border-rose-500/20",
+    "image": "/Certificate/Oops.png",
+    "description": "In-depth learning of OOP concepts: Inheritance, Polymorphism, Abstraction, and Encapsulation.",
+    "link": "https://drive.google.com/file/d/1psJIl4PInqEPyp8jEFNJAMM4a7csBfXb/view?usp=sharing"
+  },
+  {
+    "id": 17,
+    "title": "Prompt Engineering with ChatGPT 4",
+    "platform": "Udemy",
+    "date": "2024",
+    "category": "AI / ML",
+    "color": "#38bdf8",
+    "colorBg": "bg-sky-500/10",
+    "colorText": "text-sky-400",
+    "colorBorder": "border-sky-500/20",
+    "image": "/Certificate/ChatGPT 4.png",
+    "description": "Mastering the art of writing precise prompts to fully leverage ChatGPT 4 capabilities.",
+    "link": "https://drive.google.com/file/d/1NYB38J32mJbxo-GQDYUsz9y1M3WGWLBP/view?usp=sharing"
   }
 ]
-

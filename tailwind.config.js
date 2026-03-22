@@ -41,7 +41,8 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['Outfit', 'Inter', 'system-ui', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        display: ['"Syne"', 'sans-serif'],
       },
       animation: {
         'gradient-x': 'gradient-x 15s ease infinite',
