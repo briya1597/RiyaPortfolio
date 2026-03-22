@@ -1,0 +1,20 @@
+{
+  "Languages": [
+    {"name": "C++", "icon": "SiCplusplus", "color": "#00599C", "type": "Languages"},
+    {"name": "JavaScript", "icon": "SiJavascript", "color": "#F7DF1E", "type": "Languages"},
+    {"name": "C", "icon": "SiC", "color": "#A8B9CC", "type": "Languages"}
+  ],
+  "Frameworks": [
+    {"name": "React", "icon": "SiReact", "color": "#61DAFB", "type": "Frontend"},
+    {"name": "Node.js", "icon": "SiNodedotjs", "color": "#339933", "type": "Backend"},
+    {"name": "Express.js", "icon": "SiExpress", "color": "#ffffff", "type": "Backend"},
+    {"name": "Tailwind CSS", "icon": "SiTailwindcss", "color": "#06B6D4", "type": "Frontend"}
+  ],
+  "Tools": [
+    {"name": "MongoDB", "icon": "SiMongodb", "color": "#47A248", "type": "Database"},
+    {"name": "MySQL", "icon": "SiMysql", "color": "#4479A1", "type": "Database"},
+    {"name": "Git", "icon": "SiGit", "color": "#F05032", "type": "Tools"},
+    {"name": "GitHub", "icon": "SiGithub", "color": "#ffffff", "type": "Tools"},
+    {"name": "Postman", "icon": "SiPostman", "color": "#FF6C37", "type": "Tools"}
+  ]
+}

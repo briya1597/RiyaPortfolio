@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "title": "AspireLens – AI-Powered Career Counselling",
+    "shortTitle": "AspireLens",
+    "tag": "AI / ML",
+    "description": "An AI-driven platform helping students discover ideal career paths through aptitude analysis and personalized recommendations powered by GROQ API.",
+    "features": [
+      "JWT authentication & email verification system",
+      "AI-based assessment workflow",
+      "Personalized career roadmap generation"
+    ],
+    "impact": [
+      "90% reduction in unverified users",
+      "40% reduction in manual counselling effort"
+    ],
+    "techStack": ["React", "Node.js", "Express.js", "MongoDB", "JWT", "Nodemailer", "GROQ API", "Tailwind CSS"],
+    "github": "#",
+    "live": "#",
+    "color": "from-sky-500/20 to-violet-500/10",
+    "accent": "#0ea5e9"
+  },
+  {
+    "id": 2,
+    "title": "Ecolocator – E-Waste Facility Locator",
+    "shortTitle": "Ecolocator",
+    "tag": "Web Apps",
+    "description": "A web application to find certified e-waste recycling centers near you using interactive maps, pincode search, and facility type filtering.",
+    "features": [
+      "Interactive maps with Leaflet.js & OpenStreetMap",
+      "Search by pincode, state, or facility type",
+      "Real-time facility data from JSON datasets"
+    ],
+    "impact": [
+      "40% improved search efficiency",
+      "35% increase in user engagement"
+    ],
+    "techStack": ["PHP", "JavaScript", "Tailwind CSS", "Leaflet.js", "JSON"],
+    "github": "#",
+    "live": "#",
+    "color": "from-emerald-500/20 to-cyan-500/10",
+    "accent": "#10b981"
+  }
+]
