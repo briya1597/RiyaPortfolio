@@ -149,7 +149,7 @@ const Projects = () => {
     <PageTransition>
       <div className="relative min-h-screen py-24 px-6 overflow-hidden">
         {/* Cinematic Backdrop */}
-        <div className="absolute inset-0 z-0 bg-slate-50 dark:bg-slate-950 transition-colors duration-700" />
+        <div className="absolute inset-0 z-0 bg-transparent transition-colors duration-700" />
         <motion.div
           animate={{ scale: [1, 1.3, 1], opacity: [0.1, 0.25, 0.1] }}
           transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}

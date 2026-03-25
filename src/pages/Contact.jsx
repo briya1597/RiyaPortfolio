@@ -181,7 +181,7 @@ const Contact = () => {
 
   return (
     <PageTransition>
-      <div className="relative min-h-screen overflow-hidden py-8 px-4 bg-slate-50 dark:bg-slate-950 transition-colors duration-700">
+      <div className="relative min-h-screen overflow-hidden py-8 px-4 bg-transparent transition-colors duration-700">
         {/* Background orbs */}
         <motion.div
           animate={{ 

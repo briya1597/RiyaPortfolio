@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import WavyBackground from './components/WavyBackground';
 
 // Lazy load pages
 const Home = lazy(() => import('./pages/Home'));
@@ -51,7 +52,8 @@ const App = () => {
 
   return (
     <Router>
-      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+      <div className="min-h-screen transition-colors duration-300 relative bg-transparent">
+        <WavyBackground />
         <AnimatePresence>
           {loading ? (
             <motion.div

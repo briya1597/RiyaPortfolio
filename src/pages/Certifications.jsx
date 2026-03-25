@@ -150,7 +150,7 @@ const Certifications = () => {
 
   return (
     <PageTransition>
-      <div className="relative min-h-screen overflow-hidden py-8 px-4 bg-slate-50 dark:bg-slate-950 transition-colors duration-700">
+      <div className="relative min-h-screen overflow-hidden py-8 px-4 bg-transparent transition-colors duration-700">
         <div className="absolute inset-0 bg-mesh opacity-40 dark:opacity-20 pointer-events-none" />
         {/* Background orbs */}
         <motion.div

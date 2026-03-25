@@ -92,7 +92,7 @@ const cardVariants = {
 const Achievements = () => {
   return (
     <PageTransition>
-      <div className="relative min-h-screen pt-24 pb-20 px-4 overflow-hidden bg-slate-50 dark:bg-slate-950 transition-colors duration-700">
+      <div className="relative min-h-screen pt-24 pb-20 px-4 overflow-hidden bg-transparent transition-colors duration-700">
         {/* Background elements */}
         <div className="absolute inset-0 bg-mesh opacity-40 dark:opacity-20 pointer-events-none" />
         <motion.div

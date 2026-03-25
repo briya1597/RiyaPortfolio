@@ -17,6 +17,7 @@
     "techStack": ["React", "Node.js", "Express.js", "MongoDB", "JWT", "Nodemailer", "GROQ API", "Tailwind CSS"],
     "github": "#",
     "live": "#",
+    "image": "/src/assets/Projects/Aspirelens.png",
     "color": "from-sky-500/20 to-violet-500/10",
     "accent": "#0ea5e9"
   },
@@ -38,7 +39,34 @@
     "techStack": ["PHP", "JavaScript", "Tailwind CSS", "Leaflet.js", "JSON"],
     "github": "#",
     "live": "#",
+    "image": "/src/assets/Projects/EcoLocator.png",
     "color": "from-emerald-500/20 to-cyan-500/10",
     "accent": "#10b981"
+  },
+  {
+    "id": 3,
+    "title": "EcoRevive – Community Recycling Hub",
+    "shortTitle": "EcoRevive",
+    "tag": "Sustainability",
+    "description": "Platform connecting local communities for e-waste awareness and efficient point-to-point recycling coordination.",
+    "techStack": ["React", "Firebase", "Google Maps API"],
+    "github": "#",
+    "live": "#",
+    "image": "/src/assets/Projects/Ecorevive.png",
+    "color": "from-blue-500/20 to-indigo-500/10",
+    "accent": "#3b82f6"
+  },
+  {
+    "id": 4,
+    "title": "TrackTech – Inventory Management System",
+    "shortTitle": "TrackTech",
+    "tag": "Utility",
+    "description": "Smart inventory tracking solution with barcode support and real-time stock notifications.",
+    "techStack": ["Python", "Flask", "SQLite"],
+    "github": "#",
+    "live": "#",
+    "image": "/src/assets/Projects/TrackTech.png",
+    "color": "from-orange-500/20 to-red-500/10",
+    "accent": "#f97316"
   }
 ]

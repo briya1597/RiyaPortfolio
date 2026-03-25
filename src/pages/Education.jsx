@@ -2,17 +2,11 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   GraduationCap, BookOpen, CalendarDays, MapPin,
-  Star, Award, TrendingUp, School
+  Star, Award, School
 } from 'lucide-react';
 import PageTransition from '../components/PageTransition';
 
 // ─── Education Data ────────────────────────────────────────────────────────────
-const EDU_TABS = [
-  { id: 'graduation', label: 'Graduation', icon: <GraduationCap size={16} /> },
-  { id: 'class12',    label: 'Class XII',  icon: <BookOpen size={16} /> },
-  { id: 'class10',    label: 'Class X',    icon: <School size={16} /> },
-];
-
 const EDU_DATA = {
   graduation: {
     icon: <GraduationCap size={36} />,
@@ -78,7 +72,7 @@ const InfoRow = ({ icon: Icon, label, value, color }) => (
   </div>
 );
 
-// ─── Main Education Page ───────────────────────────────────────────────────────
+// ─── Background Orbs ─────────────────────────────────────────────────────────
 const BackgroundOrbs = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none">
     <motion.div
@@ -100,9 +94,7 @@ const Education = () => {
 
   return (
     <PageTransition>
-      <div className="relative min-h-screen overflow-hidden py-24 px-4 bg-slate-50 dark:bg-slate-950 transition-colors duration-700">
-        {/* Background orbs */}
-        <BackgroundOrbs />
+      <div className="relative min-h-screen overflow-hidden py-24 px-4 bg-transparent transition-colors duration-700">
         <div className="absolute inset-0 bg-mesh opacity-40 dark:opacity-20 pointer-events-none" />
 
         <div className="relative z-10 container mx-auto max-w-4xl">
@@ -121,13 +113,12 @@ const Education = () => {
               <GraduationCap size={14} />
               Educational Path
             </motion.div>
-            <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tight text-theme-main">
+            <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tight text-theme-main" style={{ fontFamily: "'Poppins', sans-serif" }}>
               My <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Education</span>
             </h1>
             <p className="text-lg text-theme-muted max-w-2xl mx-auto leading-relaxed font-medium">
               A journey of persistent learning, academic excellence, and technical skill development.
             </p>
-            {/* Divider */}
             <div className="flex items-center gap-4 justify-center mt-8">
               <div className="w-16 h-px bg-gradient-to-r from-transparent to-primary" />
               <div className="w-2 h-2 rounded-full bg-primary" />
@@ -202,10 +193,7 @@ const Education = () => {
                       <div className={`text-[9px] font-black uppercase tracking-[0.2em] mb-2 text-white/70`}>
                         {activeData.scoreLabel}
                       </div>
-                      <div
-                        className="text-5xl font-black mb-3 text-white"
-                        style={{ fontFamily: "'Poppins', sans-serif" }}
-                      >
+                      <div className="text-5xl font-black mb-3 text-white" style={{ fontFamily: "'Poppins', sans-serif" }}>
                         {activeData.score}
                       </div>
                       <div className="flex justify-center gap-1">
@@ -256,9 +244,7 @@ const Education = () => {
 
               {/* Additional Card */}
               <div className="glass-card relative p-12 overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 group mt-10">
-                {/* Background accent */}
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                
                 <div className="relative z-10 max-w-xl text-center md:text-left">
                   <span className="inline-block px-3 py-1 rounded-lg bg-emerald-500/10 text-emerald-500 text-[10px] font-black uppercase tracking-widest mb-4">Focus Areas</span>
                   <h3 className="text-3xl font-black mb-4 text-theme-main">Beyond the Classroom</h3>
@@ -266,15 +252,14 @@ const Education = () => {
                     Focusing on hands-on project experience, competitive programming, and staying updated with the latest trends in Full Stack and AI.
                   </p>
                 </div>
-                
                 <div className="relative z-10 flex gap-4">
                   <div className="glass-card p-6 flex flex-col items-center gap-3 hover:border-primary/50 transition-colors">
-                    <div className="text-2xl font-black text-theme-main">8.5+</div>
+                    <div className="text-2xl font-black text-theme-main">7.2</div>
                     <div className="text-[10px] font-black uppercase tracking-widest text-theme-dim">CGPA</div>
                   </div>
                   <div className="glass-card p-6 flex flex-col items-center gap-3 hover:border-secondary/50 transition-colors">
-                    <div className="text-2xl font-black text-theme-main">A+</div>
-                    <div className="text-[10px] font-black uppercase tracking-widest text-theme-dim">Academic Rating</div>
+                    <div className="text-2xl font-black text-theme-main">CSE</div>
+                    <div className="text-[10px] font-black uppercase tracking-widest text-theme-dim">Branch</div>
                   </div>
                 </div>
               </div>

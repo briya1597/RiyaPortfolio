@@ -76,7 +76,9 @@ const Skills = () => {
 
   useEffect(() => {
     if (activeFilter === 'All') {
-      setFilteredData(skillsData);
+      // Flatten all skills into a single "All" category for a unified grid
+      const allSkills = Object.values(skillsData).flat();
+      setFilteredData({ "All Technologies": allSkills });
     } else {
       const filtered = {};
       Object.keys(skillsData).forEach(cat => {
@@ -91,7 +93,7 @@ const Skills = () => {
 
   return (
     <PageTransition>
-      <div className="relative min-h-screen py-24 px-6 overflow-hidden bg-slate-50 dark:bg-slate-950 transition-colors duration-700">
+      <div className="relative min-h-screen py-24 px-6 overflow-hidden bg-transparent transition-colors duration-700">
         {/* Cinematic Backdrop */}
         <div className="absolute inset-0 bg-mesh opacity-40 dark:opacity-20 pointer-events-none" />
         <motion.div
@@ -173,12 +175,14 @@ const Skills = () => {
                   exit={{ opacity: 0, x: 20 }}
                   className="space-y-12"
                 >
-                  <div className="flex items-center gap-6 text-left">
-                    <h2 className="text-2xl font-black text-theme-main tracking-widest uppercase border-b-4 border-primary/20 pb-2">
-                      {category}
-                    </h2>
-                    <div className="flex-1 h-px bg-gradient-to-r from-slate-200 dark:from-white/10 to-transparent" />
-                  </div>
+                  {activeFilter !== 'All' && (
+                    <div className="flex items-center gap-6 text-left">
+                      <h2 className="text-2xl font-black text-theme-main tracking-widest uppercase border-b-4 border-primary/20 pb-2">
+                        {category}
+                      </h2>
+                      <div className="flex-1 h-px bg-gradient-to-r from-slate-200 dark:from-white/10 to-transparent" />
+                    </div>
+                  )}
                   
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
                     {skills.map((skill, idx) => (
