@@ -12,8 +12,8 @@ const CONTACTS = [
   {
     icon: <Mail size={22} />,
     label: 'Email',
-    value: 'riya@example.com',
-    href: 'mailto:riya@example.com',
+    value: 'briya1597@gmail.com',
+    href: 'mailto:briya1597@gmail.com',
     color: 'var(--accent-primary)',
     colorBg: 'bg-primary/10',
     colorBorder: 'border-primary/20',
@@ -34,8 +34,8 @@ const CONTACTS = [
   {
     icon: <Linkedin size={22} />,
     label: 'LinkedIn',
-    value: 'linkedin.com/in/riya',
-    href: 'https://linkedin.com',
+    value: 'linkedin.com/in/riya-bisht',
+    href: 'https://www.linkedin.com/in/riya-bisht-0a5789257/',
     color: 'var(--accent-secondary)',
     colorBg: 'bg-secondary/10',
     colorBorder: 'border-secondary/20',
@@ -45,8 +45,8 @@ const CONTACTS = [
   {
     icon: <Github size={22} />,
     label: 'GitHub',
-    value: 'github.com/riya',
-    href: 'https://github.com',
+    value: 'github.com/briya1597',
+    href: 'https://github.com/briya1597',
     color: '#ffffff',
     colorBg: 'bg-slate-500/10',
     colorBorder: 'border-slate-500/20',

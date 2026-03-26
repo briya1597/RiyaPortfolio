@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -20,9 +21,9 @@ const Footer = () => {
 
         <div className="flex flex-col md:items-end gap-4">
            <div className="flex gap-8 text-sm font-black uppercase tracking-widest text-slate-400">
-              <a href="#about" className="hover:text-primary-400 transition-colors">About</a>
-              <a href="#projects" className="hover:text-primary-400 transition-colors">Lab</a>
-              <a href="#contact" className="hover:text-primary-400 transition-colors">Talk</a>
+              <Link to="/" className="hover:text-primary-400 transition-colors">About</Link>
+              <Link to="/projects" className="hover:text-primary-400 transition-colors">Lab</Link>
+              <Link to="/contact" className="hover:text-primary-400 transition-colors">Talk</Link>
            </div>
            <p className="text-slate-600 text-xs font-bold uppercase tracking-[0.2em] mt-8">
             © {currentYear} RIYA DESIGN LAB. ALL RIGHTS RESERVED.

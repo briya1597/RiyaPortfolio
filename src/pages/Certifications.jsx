@@ -110,19 +110,28 @@ const CertCard = ({ cert }) => {
             </p>
             
             <div className="flex flex-col gap-3 w-full">
-              <motion.a
-                href={cert.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center justify-center gap-3 py-4 rounded-2xl text-sm font-bold text-white uppercase tracking-widest transition-all duration-300 shadow-xl"
-                style={{ background: `linear-gradient(135deg, ${cert.color}, #7c3aed)` }}
-                onClick={(e) => e.stopPropagation()}
-              >
-                View Certificate
-                <ExternalLink size={18} />
-              </motion.a>
+              {cert.link ? (
+                <motion.a
+                  href={cert.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex items-center justify-center gap-3 py-4 rounded-2xl text-sm font-bold text-white uppercase tracking-widest transition-all duration-300 shadow-xl"
+                  style={{ background: `linear-gradient(135deg, ${cert.color}, #7c3aed)` }}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  View Certificate
+                  <ExternalLink size={18} />
+                </motion.a>
+              ) : (
+                <div
+                  className="flex items-center justify-center gap-3 py-4 rounded-2xl text-sm font-bold text-white/40 uppercase tracking-widest cursor-not-allowed"
+                  style={{ background: `linear-gradient(135deg, ${cert.color}55, #7c3aed55)` }}
+                >
+                  No Link Available
+                </div>
+              )}
             </div>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   Award, 
@@ -18,9 +19,9 @@ const ACHIEVEMENTS = [
   {
     id: 1,
     title: "Data Structures & Algorithms",
-    description: "Solved 150+ problems across LeetCode, GeeksforGeeks, and HackerRank. Maintaining a consistent problem-solving streak and optimizing algorithmic complexity.",
+    description: "Solved 100+ problems across LeetCode, GeeksforGeeks, and HackerRank. Maintaining a consistent problem-solving streak and optimizing algorithmic complexity.",
     icon: <Code2 className="w-6 h-6" />,
-    stats: "150+ Problems",
+    stats: "100+ Problems",
     color: "from-sky-500 to-blue-600",
     tags: ["LeetCode", "GFG", "HackerRank"],
     link: { label: "View on Codolio", url: "https://codolio.com/profile/riyabisht" }
@@ -256,14 +257,15 @@ const Achievements = () => {
                 <h4 className="text-2xl font-black mb-2 text-theme-main">Continuous Growth</h4>
                 <p className="text-theme-muted font-medium tracking-tight">Always learning and pushing the boundaries of what's possible.</p>
               </div>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 rounded-2xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-sm font-black uppercase tracking-widest shadow-xl flex items-center gap-3 group"
-              >
-                View Certifications
-                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </motion.button>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link
+                  to="/certifications"
+                  className="px-8 py-4 rounded-2xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-sm font-black uppercase tracking-widest shadow-xl flex items-center gap-3 group"
+                >
+                  View Certifications
+                  <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </motion.div>
             </div>
           </motion.div>
         </div>

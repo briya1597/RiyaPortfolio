@@ -193,7 +193,7 @@ const Home = () => {
                 <Link to="/projects" className="px-8 py-4 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold uppercase tracking-[0.1em] text-sm hover:scale-105 transition-transform flex items-center gap-2">
                   View Work <ArrowRight size={16} />
                 </Link>
-                <a href="#" className="px-8 py-4 rounded-full border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-bold uppercase tracking-[0.1em] text-sm hover:border-primary hover:text-primary transition-colors flex items-center gap-2">
+                <a href="https://drive.google.com/uc?export=download&id=143gLVPV6mqeGwCYu5GfCpJHOcO2mjtlX" download="Riya_Resume.pdf" target="_blank" rel="noreferrer" className="px-8 py-4 rounded-full border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-bold uppercase tracking-[0.1em] text-sm hover:border-primary hover:text-primary transition-colors flex items-center gap-2">
                   <Download size={16} /> Resume
                 </a>
               </motion.div>

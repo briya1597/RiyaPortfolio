@@ -78,7 +78,10 @@ const Navbar = () => {
               )}
             </NavLink>
           ))}
+          
         </div>
+
+
 
         {/* Right Actions */}
         <div className="flex items-center gap-3">
