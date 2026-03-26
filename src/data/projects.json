@@ -17,12 +17,13 @@
     "techStack": ["React", "Node.js", "Express.js", "MongoDB", "JWT", "Nodemailer", "GROQ API", "Tailwind CSS"],
     "github": "https://github.com/briya1597/Aspirelens",
     "live": "https://careerwithaspirelens.vercel.app/",
-    "image": "/src/assets/Projects/Aspirelens.png",
+    
     "color": "from-sky-500/20 to-violet-500/10",
     "accent": "#0ea5e9",
     "stars": 2,
     "featured": true
   },
+  
   {
     "id": 2,
     "title": "Ecolocator – E-Waste Facility Locator",
@@ -41,7 +42,7 @@
     "techStack": ["PHP", "JavaScript", "Tailwind CSS", "Leaflet.js", "JSON"],
     "github": "https://github.com/briya1597/E_watse_Facility",
     "live": "https://ecolocator.vercel.app",
-    "image": "/src/assets/Projects/EcoLocator.png",
+    
     "color": "from-emerald-500/20 to-cyan-500/10",
     "accent": "#10b981",
     "stars": 1,
@@ -56,7 +57,7 @@
     "techStack": ["React", "Firebase", "Google Maps API"],
     "github": "https://github.com/briya1597/EcoRevive",
     "live": "https://briya1597.github.io/EcoRevive/",
-    "image": "/src/assets/Projects/Ecorevive.png",
+
     "color": "from-blue-500/20 to-indigo-500/10",
     "accent": "#3b82f6",
     "stars": 0,
@@ -71,7 +72,7 @@
     "techStack": ["Python", "Flask", "SQLite"],
     "github": "https://github.com/briya1597/AI_Project",
     "live": "https://tracktech-two.vercel.app/",
-    "image": "/src/assets/Projects/TrackTech.png",
+
     "color": "from-orange-500/20 to-red-500/10",
     "accent": "#f97316",
     "stars": 0,
