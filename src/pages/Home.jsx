@@ -185,8 +185,8 @@ const Home = () => {
                 <span className="inline-block w-3 h-6 bg-primary/60 ml-2 animate-pulse" />
               </motion.div>
 
-              <motion.p variants={fadeUp} className="text-lg text-slate-500 dark:text-slate-400 leading-relaxed max-w-xl mb-10">
-                Crafting premium digital experiences bridging complex logic with flawless design. I build scalable web ecosystems, pixel by pixel.
+              <motion.p variants={fadeUp} className="text-lg text-slate-500 dark:text-slate-400 leading-relaxed max-w-2xl mb-10">
+                I'm a Computer Science student and Full Stack Developer who loves turning complex ideas into clean, scalable web applications. From architecting RESTful APIs and handling authentication flows to crafting smooth, animated UIs — I thrive at every layer of the stack. I'm passionate about AI integration, sustainable tech, and building products that make a real-world impact.
               </motion.p>
 
               <motion.div variants={fadeUp} className="flex flex-wrap gap-4 justify-center">

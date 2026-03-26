@@ -22,7 +22,8 @@ const ACHIEVEMENTS = [
     icon: <Code2 className="w-6 h-6" />,
     stats: "150+ Problems",
     color: "from-sky-500 to-blue-600",
-    tags: ["LeetCode", "GFG", "HackerRank"]
+    tags: ["LeetCode", "GFG", "HackerRank"],
+    link: { label: "View on Codolio", url: "https://codolio.com/profile/riyabisht" }
   },
   {
     id: 2,
@@ -41,18 +42,19 @@ const ACHIEVEMENTS = [
     stats: "Gold Level",
     color: "from-emerald-400 to-teal-500",
     tags: ["C++", "Python", "Skill Verified"],
+    link: { label: "View HackerRank Profile", url: "https://www.hackerrank.com/profile/briya1597" },
     badges: [
       { 
         name: "C++", 
         stars: 3, 
         color: "text-sky-400", 
-        img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" // Placeholder, user to replace
+        img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
       },
       { 
         name: "Python", 
         stars: 3, 
         color: "text-emerald-400", 
-        img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" // Placeholder, user to replace
+        img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
       }
     ]
   },
@@ -63,7 +65,8 @@ const ACHIEVEMENTS = [
     icon: <Github className="w-6 h-6" />,
     stats: "5+ Repos",
     color: "from-slate-600 to-slate-800",
-    tags: ["GitHub", "Collaboration", "Git"]
+    tags: ["GitHub", "Collaboration", "Git"],
+    link: { label: "View GitHub Profile", url: "https://github.com/briya1597" }
   }
 ];
 
@@ -166,12 +169,25 @@ const Achievements = () => {
                     </div>
 
                     <div className="mt-auto pt-6 border-t border-white/10 flex flex-col gap-4">
-                      <div className="flex flex-wrap gap-2">
-                        {achievement.tags.map(tag => (
-                          <span key={tag} className="text-[10px] font-bold px-3 py-1 rounded-lg bg-primary/5 text-primary">
-                            {tag}
-                          </span>
-                        ))}
+                      <div className="flex flex-wrap items-center justify-between gap-3">
+                        <div className="flex flex-wrap gap-2">
+                          {achievement.tags.map(tag => (
+                            <span key={tag} className="text-[10px] font-bold px-3 py-1 rounded-lg bg-primary/5 text-primary">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                        {achievement.link && (
+                          <a
+                            href={achievement.link.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest text-theme-muted border border-white/10 px-3 py-1.5 rounded-lg hover:border-primary/40 hover:text-primary transition-all duration-300"
+                          >
+                            <ExternalLink size={10} />
+                            {achievement.link.label}
+                          </a>
+                        )}
                       </div>
 
                       {/* Achievements Badges (specifically for HackerRank section) */}

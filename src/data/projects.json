@@ -3,7 +3,7 @@
     "id": 1,
     "title": "AspireLens – AI-Powered Career Counselling",
     "shortTitle": "AspireLens",
-    "tag": "AI / ML",
+    "category": "Full Stack",
     "description": "An AI-driven platform helping students discover ideal career paths through aptitude analysis and personalized recommendations powered by GROQ API.",
     "features": [
       "JWT authentication & email verification system",
@@ -15,17 +15,19 @@
       "40% reduction in manual counselling effort"
     ],
     "techStack": ["React", "Node.js", "Express.js", "MongoDB", "JWT", "Nodemailer", "GROQ API", "Tailwind CSS"],
-    "github": "#",
-    "live": "#",
+    "github": "https://github.com/briya1597",
+    "live": "https://careerwithaspirelens.vercel.app/",
     "image": "/src/assets/Projects/Aspirelens.png",
     "color": "from-sky-500/20 to-violet-500/10",
-    "accent": "#0ea5e9"
+    "accent": "#0ea5e9",
+    "stars": 2,
+    "featured": true
   },
   {
     "id": 2,
     "title": "Ecolocator – E-Waste Facility Locator",
     "shortTitle": "Ecolocator",
-    "tag": "Web Apps",
+    "category": "Web Apps",
     "description": "A web application to find certified e-waste recycling centers near you using interactive maps, pincode search, and facility type filtering.",
     "features": [
       "Interactive maps with Leaflet.js & OpenStreetMap",
@@ -37,36 +39,42 @@
       "35% increase in user engagement"
     ],
     "techStack": ["PHP", "JavaScript", "Tailwind CSS", "Leaflet.js", "JSON"],
-    "github": "#",
-    "live": "#",
+    "github": "https://github.com/briya1597/E_watse_Facility_Locator",
+    "live": "https://briya1597.github.io/E_watse_Facility_Locator/",
     "image": "/src/assets/Projects/EcoLocator.png",
     "color": "from-emerald-500/20 to-cyan-500/10",
-    "accent": "#10b981"
+    "accent": "#10b981",
+    "stars": 1,
+    "featured": false
   },
   {
     "id": 3,
     "title": "EcoRevive – Community Recycling Hub",
     "shortTitle": "EcoRevive",
-    "tag": "Sustainability",
+    "category": "Full Stack",
     "description": "Platform connecting local communities for e-waste awareness and efficient point-to-point recycling coordination.",
     "techStack": ["React", "Firebase", "Google Maps API"],
-    "github": "#",
+    "github": "https://github.com/briya1597/EcoRevive",
     "live": "#",
     "image": "/src/assets/Projects/Ecorevive.png",
     "color": "from-blue-500/20 to-indigo-500/10",
-    "accent": "#3b82f6"
+    "accent": "#3b82f6",
+    "stars": 0,
+    "featured": false
   },
   {
     "id": 4,
     "title": "TrackTech – Inventory Management System",
     "shortTitle": "TrackTech",
-    "tag": "Utility",
+    "category": "Utility",
     "description": "Smart inventory tracking solution with barcode support and real-time stock notifications.",
     "techStack": ["Python", "Flask", "SQLite"],
-    "github": "#",
+    "github": "https://github.com/briya1597",
     "live": "#",
     "image": "/src/assets/Projects/TrackTech.png",
     "color": "from-orange-500/20 to-red-500/10",
-    "accent": "#f97316"
+    "accent": "#f97316",
+    "stars": 0,
+    "featured": false
   }
 ]
